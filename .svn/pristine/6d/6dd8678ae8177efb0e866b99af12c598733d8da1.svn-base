@@ -1,0 +1,126 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<title>북토피아: 메인화면</title>
+</head>
+<body>  
+<%@ include file="/common/navbar.jsp" %>
+<div class="back">
+	<div class="container">
+		<div class="row pobook main text-center">
+			<h1>도서 검색</h1> 
+			<form action="#" method="get" class="fr">
+				<select class="form-control sel">
+					<option>제목 or 저자</option>
+					<option>제목(부분일치)</option>
+					<option>제목(전방일치)</option>
+					<option>제목(완전일치)</option>
+					<option>저자</option>
+					<option>출판사</option>
+				</select>
+				<input type="text" class="form-control search">
+				<input type="submit" value="검색" class="btn btn-primary sh">
+			</form>
+			
+			<div class="row text-center">	
+				<h1>인기 도서</h1>
+				<button class="btn btn-default btn-sm bt">대여순</button>
+				<button class="btn btn-default btn-sm up">추천순</button>
+				<ul>
+					<li>
+						<a href="/detailbook.jsp"><img alt="" src="images/15012323206700.jpg"></a>
+						<p><a href="">1. 펭귄의 사생활</a></p>
+						<p>와타나베 유키</p>							
+					</li>
+					<li>
+						<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+						<p><a href="">2. 펭귄의 사생활</a></p>
+						<p>와타나베 유키</p>							
+					</li>
+					<li>
+						<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+						<p><a href="">3. 펭귄의 사생활</a></p>
+						<p>와타나베 유키</p>
+					</li>
+					<li>
+						<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+						<p><a href="">4. 펭귄의 사생활</a></p>
+						<p>와타나베 유키</p>
+					</li>
+					<li>
+						<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+						<p><a href="">5. 펭귄의 사생활</a></p>
+						<p>와타나베 유키</p>
+					</li>
+				</ul>				
+			</div>
+				
+		</div>		
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 notice" >
+			<h2><a href="">공지사항</a></h2>				
+			<div>
+				<ul>
+					<li>
+						<a href="#">공지사항...</a>
+						<span>2017.09.02</span>
+					</li>
+					<li>
+						<a href="#">공지사항...</a>
+						<span>2017.09.02</span>
+					</li>							
+				</ul>					
+			</div>
+		</div>
+		<div class="col-sm-6" id="util">
+			<div class="row">
+				<a href="/mypage/wish/wishbook.jsp" class="btn btn-primary">희망 도서 신청</a>
+			</div>					
+			<div class="row">
+				<a href="/mypage/borrow/borrow.jsp"  class="btn btn-success">대출 도서 조회</a>					
+			</div>
+		</div>				
+	</div>
+	
+	<div class="row text-center">			
+		<div class="container">
+	 				<h1 style="color:#82ba44;">신착 도서</h1>        
+		</div>		
+		<ul class="newbooklist">
+			<li>
+				<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+				<p><a href="">펭귄의 사생활</a></p>
+				<p>와타나베 유키</p>							
+			</li>
+			<li>
+				<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+				<p><a href="">펭귄의 사생활</a></p>
+				<p>와타나베 유키</p>							
+			</li>
+			<li>
+				<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+				<p><a href="">펭귄의 사생활</a></p>
+				<p>와타나베 유키</p>
+			</li>
+			<li>
+				<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+				<p><a href="">펭귄의 사생활</a></p>
+				<p>와타나베 유키</p>
+			</li>
+			<li>
+				<a href="#"><img alt="" src="images/15012323206700.jpg"></a>
+				<p><a href="">펭귄의 사생활</a></p>
+				<p>와타나베 유키</p>
+			</li>
+		</ul>				
+	</div>	
+</div>	
+<%@ include file="/common/footer.jsp" %>
+</body>
+</html>

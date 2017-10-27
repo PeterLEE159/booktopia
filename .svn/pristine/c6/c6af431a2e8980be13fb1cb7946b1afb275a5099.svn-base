@@ -1,0 +1,40 @@
+package kr.go.booktopia.vo;
+
+import java.util.Date;
+
+public class BookBooking extends BaseVo{
+	private Book book;
+	private int userId;
+	private Date bookingDate;
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	@Override
+	public String toString() {
+		return "BookBooking [book=" + book + ", userId=" + userId + ", bookingDate=" + bookingDate + ", id=" + id
+				+ ", charIsActive=" + charIsActive + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
+	
+}

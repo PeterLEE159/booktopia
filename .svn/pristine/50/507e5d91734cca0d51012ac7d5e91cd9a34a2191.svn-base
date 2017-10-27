@@ -1,0 +1,88 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css">
+<title>북토피아: 책 예약하기</title>
+</head>
+<body>
+<%@ include file="/common/navbar.jsp" %>
+<section id="section-calendar animated fadeIn">
+	<div class="row">
+		<div class="col-md-5 col-md-offset-1">
+			<div id='calendar'></div>
+		</div>
+		<div class="col-md-4 col-md-offset-1">
+		
+		</div>
+	</div>
+	
+	
+</section>
+<%@ include file="/common/footer.jsp" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/ko.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/locale/ko.js"></script>
+
+
+<script>
+$(document).ready(function() {
+	
+	
+	
+	var events = [{
+	    title: 'event1',
+	    start: '2017-08-01'
+	}, {
+	    title: 'event2',
+	    start: '2013-12-05',
+	    end: '2013-12-07'
+	}, {
+	    title: 'event3',
+	    start: '2013-12-15',
+	}];
+	$('#calendar').fullCalendar({
+	    events: events
+	});
+	for (var i = 0; i < events.length; i++) {
+	    var evStartDate = new Date(events[i].start), evFinishDate = new Date(events[i].end);
+	    if (events[i].end) {
+	        while (evStartDate <= evFinishDate) {
+	            addClassByDate(evStartDate);
+	            evStartDate.setDate(evStartDate.getDate() + 1);
+	        }
+	    } else {
+	        addClassByDate(evStartDate);
+	    }
+	}
+
+	function addClassByDate(date) {
+	    var dataAttr = getDataAttr(date);
+	    $("[data-date='" + dataAttr + "']").addClass("hasEvent");
+	}
+
+	function getDataAttr(date) {
+	    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (date.getDate().toString().length === 2 ? date.getDate() : "0" + date.getDate());
+	};
+	
+	
+	
+	
+	$('#calendar').fullCalendar({
+	    // put your options and callbacks here
+	    dayClick: function() {
+        	alert('a day has been clicked!');
+    	}
+	})
+	
+	
+})
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<%@page import="kr.go.booktopia.vo.BookComment"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.go.booktopia.vo.Criteria"%>
+<%@page import="kr.go.booktopia.vo.Book"%>
+<%@page import="kr.go.booktopia.dao.DaoManager"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<title>북토피아: 책 상세정보</title>
+</head>
+<body>
+<%@ include file="/common/navbar.jsp" %>
+<%
+	returnUrl = request.getParameter("returnUrl");
+
+	
+	DaoManager manager = DaoManager.getInstance();
+	int bid = Integer.parseInt(request.getParameter("id"));
+	
+	Book book = manager.read(Book.class, bid);
+	book.setViewCount(book.getViewCount()+1);
+	manager.update(book);
+	
+	Criteria criteria = new Criteria();
+	criteria.setBookId(bid);
+	List<BookComment> commentList = manager.list(BookComment.class, criteria);
+
+%>
+
+<div class="container top-buffer">
+	<div class="row">
+		<div class="col-md-4">
+			<img class="img-thumbnail img-response" src="<%=book.getFullImageUrl() %>">
+			<div class="btn-group top-buffer">
+				<a class="btn btn-default" target="_black" href="/do.book_preview?previewUrl=<%=book.getPreviewUrl() %>"><i class="fa fa-eye fa-fw"></i>미리보기</a>
+				<a class="btn btn-default"><i class="fa fa-book fa-fw"></i>예약하기</a>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<h3><%=book.getName() %>          
+			<span class="rating">
+				<span class="star<%=(book.getRatingPoint() == 5 ? " filled" : "")%>"></span>
+				<span class="star<%=(book.getRatingPoint() >= 4 ? " filled" : "")%>"></span>
+				<span class="star<%=(book.getRatingPoint() >= 3 ? " filled" : "")%>"></span>
+				<span class="star<%=(book.getRatingPoint() >= 2 ? " filled" : "")%>"></span>
+				<span class="star<%=(book.getRatingPoint() >= 1 ? " filled" : "")%>"></span>
+			</span>
+			<small>
+				
+				<a id="btn-recommend" class="a-unstyle pull-right right-buffer btn btn-default" href="javascript:recommend(<%=(user != null ? user.getId() : 0) %>, <%=book.getId()%>)">
+				<i class="fa fa-heart-o fa-fw"></i><%=book.getRecommendCount() %></a>
+			</small>
+			</h3>
+			<table class="table table-hover top-buffer">
+				<colgroup>
+					<col width="30%">
+					<col width="70%">
+				</colgroup>
+				<tr>
+					<th>저자</th>
+					<td><%=book.getWriter().getName() %></td>
+				</tr>
+				<tr>
+					<th>역자</th>
+					<td><%=book.getTranslator().getName() %></td>
+				</tr>
+				<tr>
+					<th>출판사</th>
+					<td><%=book.getPublisher().getName() %></td>
+				</tr>
+				<tr>
+					<th>출판날짜</th>
+					<td><%=book.yyyymmdd(book.getPublishDate()) %></td>
+				</tr>
+				<tr>
+					<th>조회횟수</th>
+					<td><%=book.getViewCount() %></td>
+				</tr>
+				<tr>
+					<th>대여횟수</th>
+					<td><%=book.getRentalCount() %></td>
+				</tr>
+				<tr>
+					<th>현재상태</th>
+					<td><%=book.getRentalFormat() %></td>
+				</tr>
+				
+				
+			</table>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<h2 class="page-header">책 소개</h2>
+		<p><%=book.getContent() %></p>
+		<a href="<%= returnUrl%>" class="btn btn-danger">돌아가기</a>
+	</div>
+	<hr class="divider">
+	<div class="row">
+		<h2 class="page-header">댓글</h2>
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h4 style="color: white;">댓글작성</h4></div>
+			<div class="panel-body">
+				<h3>
+					<span class="rating">
+						<span class="star star-hover"></span>
+						<span class="star star-hover"></span>
+						<span class="star star-hover"></span>
+						<span class="star star-hover"></span>
+						<span class="star star-hover"></span>
+					</span>
+				</h3>
+				<textarea class="form-control" placeholder="댓글쓰기" rows="5"></textarea>
+				<a id="btn-comment" class="btn btn-primary top-buffer">저장하기</a>
+			</div>
+			
+		</div>
+		
+		<% for(BookComment comment : commentList) { %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>
+						<span class="rating">
+							<span class="star<%=(comment.getRatingPoint() == 5 ? " filled" : "")%>"></span>
+							<span class="star<%=(comment.getRatingPoint() >= 4 ? " filled" : "")%>"></span>
+							<span class="star<%=(comment.getRatingPoint() >= 3 ? " filled" : "")%>"></span>
+							<span class="star<%=(comment.getRatingPoint() >= 2 ? " filled" : "")%>"></span>
+							<span class="star<%=(comment.getRatingPoint() >= 1 ? " filled" : "")%>"></span>
+						</span>
+						
+					</h4>
+					<h3><%=comment.getUser().getName() %>
+					<small class="pull-right"><%=comment.getSimpleCreatedAt() %></small>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p><%=comment.getContent() %></p>
+				</div>
+			</div>
+		<% } %>
+		<hr class="divider">
+		
+	</div>
+</div>
+
+<%@ include file="/common/footer.jsp" %>
+</body>
+<script>
+	function recommend(userId, bookId) {
+		if(userId == 0) {
+			alert('로그인을 해주세요');
+			$('#login-form').modal();
+			return;
+		}
+			
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			if(xhr.status == 200) {
+				var message = JSON.parse(xhr.responseText);
+				if(message.statusCode == 0) {
+					// 이미 추천한 내용
+					alert('이미 추천하셨습니다');
+					return;
+				} else if(message.statusCode == -1) {
+					alert('유효한 요청이 아닙니다')
+					return;
+				} else {
+					// 새로 추천
+					
+					var btnRecommend = document.getElementById('btn-recommend');
+					var recommend = parseInt(btnRecommend.innerText) + 1
+					btnRecommend.innerHTML = "<i class='fa fa-heart-o fa-fw'></i>"+recommend;
+				}
+			}
+		}
+		xhr.open('POST', '/do.book_recommend');
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+		xhr.setRequestHeader("Cache-Control","no-cache, must-revalidate");
+		xhr.setRequestHeader("Pragma","no-cache");
+		xhr.send("bookid="+bookId+"&userid="+userId);
+	}
+</script>
+</html>

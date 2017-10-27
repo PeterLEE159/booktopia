@@ -1,0 +1,30 @@
+<%@page import="kr.go.booktopia.vo.BookWriters"%>
+<%@page import="java.util.Date"%>
+<%@page import="kr.go.booktopia.vo.Book"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+
+	String title = request.getParameter("title");
+	String wName = request.getParameter("writer");
+	BookWriters writer = new BookWriters();
+	writer.setName(wName);
+	
+	String translator = request.getParameter("translator");
+	String publisher = request.getParameter("publisher");
+	String publishDate = request.getParameter("publishdate");
+	
+	
+	String bookExplain = request.getParameter("bookexplain");
+	
+	Book book = new Book();
+	book.setName(title);
+	
+	book.setWriter(writer);
+	book.setTranslator(translator);
+	book.setPublisher(publisher);
+	book.setPublishDate(publishDate);
+	book.setContent(bookExplain);
+	
+%>

@@ -1,0 +1,13 @@
+<%@page import="kr.go.booktopia.vo.User"%>
+<%@page import="kr.go.booktopia.dao.DaoManager"%>
+<%@page import="kr.go.booktopia.vo.BookWish"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%		
+		request.setCharacterEncoding("utf-8");
+
+		String userpwd = request.getParameter("userpwd");
+		
+		
+		response.sendRedirect("uinfou.jsp");	
+%>

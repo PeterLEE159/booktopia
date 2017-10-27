@@ -1,0 +1,206 @@
+@CHARSET "UTF-8";
+@import url("https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
+@import url("https://fonts.googleapis.com/earlyaccess/nanumpenscript.css");
+@import url("http://fonts.googleapis.com/earlyaccess/jejugothic.css");
+@import url("http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css");
+@import url("https://fonts.googleapis.com/earlyaccess/kopubbatang.css");
+@import url("https://fonts.googleapis.com/earlyaccess/nanumbrushscript.css");
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url("https://fonts.googleapis.com/earlyaccess/hanna.css");
+@import url("https://fonts.googleapis.com/earlyaccess/jejuhallasan.css");
+
+
+*{margin: 0;padding: 0;}
+.f-nanum{font-family:'Nanum Pen Script', cursive}
+.f-gothic{font-family:'Jeju Gothic', sans-serif}
+.f-myeongjo{font-family:'Jeju Myeongjo', serif}
+.f-kopub{font-family:'KoPub Batang', serif}
+.f-nanum-brush{font-family:'Nanum Brush Script', cursive}
+.f-noto-sans,p,a,span{font-family:'Noto Sans KR', sans-serif}
+.f-hanna,h1,h2,h3,h4,h5,h6{font-family:'Hanna', sans-serif}
+.f-jeju-hallasan{font-family:'Jeju Hallasan', cursive}
+
+#footer{border-top:1px solid #CDCDCD; background:#fff; display:none; height: 90px;}
+#footer .row {
+	padding-top: 25px;
+}
+#footer img {
+	height: 40px;
+	width: auto;
+}
+
+footer address{font-size:16px;}
+
+h1,h2,h3,h4,h5,h6{text-transform:uppercase;color:#292F36}
+
+li {list-style: none;}
+.back {height:480px; background-color: #363636; margin-bottom:20px; }
+.navbar{border: none; margin: 0; border-radius:0;}
+.main {text-align: center; overflow: hidden;}
+.main h1{color:#fff;}
+.fr {overflow: hidden;}
+.sel {width:150px;margin: 0 10px 0 165px; float:left;}
+.search {width:600px;margin-right: 10px; float:left;}
+.sh {float:left;}
+.pobook {padding: 10px;position: relative;}
+.pobook ul {overflow: hidden;}
+.pobook ul li{float: left;margin-left:35px;}
+.pobook ul li:first-child{margin-left:135px;}
+.bt, .up {position: absolute; top:149px; left:129px;}
+.up {left: 194px;}
+.carousel-control.left, .carousel-control.right {background-image:none;}
+.pobook p{color:#fff;font-size:11px; padding: 3px 0 0 0;}
+.pobook p a{color:#fff;font-size:13px;padding: 5px 0 0 0;}
+.notice {margin-left: 80px;border: 1px solid lightgray; width:600px}
+.notice h2{margin-top: 10px;}
+.notice h2 a {font-size:24px; color:black;}
+.notice ul {padding: 0;}
+#util {margin-left: 10px; width:200px;}
+#util .row {width:200px;}
+#util .row .btn:first-child{margin-bottom:10px;}
+#util .row .btn{width:380px; height:48px; font-size:18px;}
+
+.side {margin-right:20px;}
+.side h3 {margin-top: 50px;}
+.contents h3 {margin-top: 50px;}
+.contents h3+p {border:2px solid lightgray; padding: 5px;}
+.deser {padding-bottom: 5px; border-bottom: 1px solid black; margin-bottom: 5px;}
+
+.booklist li{padding:10px 0; border-bottom: 1px dotted silver; overflow: hidden;}
+.booklist li div{float: left; margin-right:30px;}
+.booklist dl{float: left;}
+.booklist dt{margin-bottom: 10px; font-size:18px;}
+.booklist dt a{cursor:pointer; color:black;}
+.canc{margin-top: 20px;}
+
+.newbooklist {overflow: hidden;}
+.newbooklist li{float: left;margin-left:35px;}
+.newbooklist li:first-child{margin-left:130px;}
+
+.broption {margin-left:0px; padding: 3px 0;}
+
+#genre-selector {
+	padding: 12px;
+	border: 1px solid #CDCDCD;
+	overflow: hidden;
+}
+
+#genre-selector div {
+	padding-left: 32px;
+}
+
+.v-book-div {
+	display: inline-block;
+	width: 20%;
+	margin: 24px;
+	border: 1px #EEEEEE solid;
+	padding: 8px;
+}
+
+.top-buffer {
+	margin-top: 25px;
+}
+.right-butter {
+	margin-right: 25px;
+}
+.left-butter {
+	margin-left: 25px;
+}
+.bottom-butter {
+	margin-bottom: 25px;
+}
+
+.a-unstyle {
+	color: #353535;
+	text-decoration: none;
+}
+.a-unstyle:hover {
+	text-decoration: none;
+}
+
+.v-book-div img {
+	width: 100%;
+	height: 180px;
+}
+
+.v-book-div *{
+	font-size: small;
+}
+.h-book-div *{
+	font-size: medium;
+}
+
+.v-book-div, .h-book-div {
+	cursor: pointer;
+}
+
+.v-book-div img, .h-book-div img{
+	opacity: 0.5;
+}
+
+
+.v-book-div:hover img, .h-book-div:hover img{
+	opacity: 1.2;
+}
+
+.h-book-div {
+	display: block;
+	margin-bottom: 12px;
+	border-bottom: 1px #EEEEEE solid;
+	overflow: hidden;
+}
+.h-book-div img {
+	float: left;
+	width: 20%;
+	height: 180px;
+	vertical-align: center;
+}
+
+.h-desc {
+	float: right;
+	width: 70%;
+	height: 100%;
+	margin: 0;
+	padding: 12px;
+	max-height: 204px;
+}
+
+
+
+.rating {
+    unicode-bidi:bidi-override;
+    direction:rtl;
+}
+.rating span.star {
+    font-family:FontAwesome;
+    font-weight:normal;
+    font-style:normal;
+    display:inline-block;
+}
+.rating span.star:hover {
+    cursor:pointer;
+}
+.rating span.star:before {
+    content:"\f006";
+    color:#999999;
+}
+.rating span.star-hover:hover:before, .rating span.star-hover:hover~span.star:before {
+    content:"\f005";
+    color:#2fa4e7;
+}
+
+span.star.filled { 
+	color:#2fa4e7; 
+	content:"\f005";
+}
+span.star.filled:before{ 
+	color:#2fa4e7;
+	content:"\f005";
+}
+
+span.rating {
+	overflow: hidden;
+	max-height: 30px;
+}

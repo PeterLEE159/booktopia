@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<title>북토피아: 공지사항 등록</title>
+</head>
+<body>
+<% pageContext.setAttribute("url","/index.jsp"); %>
+<%@ include file="/common/navbar.jsp" %>
+<%@ include file="/loginpage/login_returnURL2.jsp" %>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2 side">
+			<%@ include file="/common/admin-side.jsp" %>
+		</div>			
+		<div class="col-sm-7 contents">
+			<h3 class="well">공지/새소식 등록</h3>	
+			<form class="well" method="post" action="noticeadd.jsp">
+				<div class="form-group">				
+
+                    <div class="radio">
+                        <label><input type="radio" name="main" value="[공지]" onchange="checkbtn(this.value);">공지글</label>
+                        <label><input type="radio" name="main" value="" onchange="checkbtn(this.value);">일반글</label>
+                  </div>
+				</div>
+				
+				<div class="form-group">
+					<label>제목</label>
+					<input id="title" type="text" class="form-control" name="title" value="" />
+				</div>
+				<div class="form-group">
+					<label>내용</label>
+					<textarea rows="10" class="form-control" name="contents"></textarea>
+				</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-info btn-sm">작성완료</button>
+					<a href="mainboard.jsp" class="btn btn-warning btn-sm">취소</a>
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+<%@ include file="/common/footer.jsp" %>
+
+</body>
+<script>
+function checkbtn(el) {	
+	var item = document.getElementById("title");
+	item.value = el;
+} 
+</script>
+
+</html>

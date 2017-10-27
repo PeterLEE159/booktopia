@@ -1,0 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<title>북토피아: 도서 등록</title>
+</head>
+<body>    
+<%@ include file="/common/navbar.jsp" %>
+
+<div class="container">		
+	<div class="row">
+		<div class="col-sm-2 side">
+			<%@ include file="/common/admin-side.jsp" %>
+		</div>
+		<div class="col-sm-7 contents">			
+			<div class="row deser">
+				<h3>도서 목록</h3>
+				<p>전체 도서 권수 : 1권</p>							
+			</div>
+			<div class="row" style="margin-bottom:20px;">
+				<form action="" method="get">			
+					<div class="form-group">
+			            <div class="col-md-3">
+			               <select class="form-control">
+			               		<option>제목 or 저자</option>
+								<option>제목(부분일치)</option>
+								<option>제목(전방일치)</option>
+								<option>제목(완전일치)</option>
+								<option>저자</option>
+								<option>출판사</option>
+			               </select>
+			            </div>
+			            <div class="col-md-6">
+			               <input type="text" class="form-control">
+			            </div>
+			            <div class="col-me-2">
+			               <input type="submit" value="검색" class="btn btn-primary sh">
+			            </div>
+	         		</div>
+         		</form>
+			</div>
+			<div class="row">
+				<div class="panel panel-default">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>도서명</th>
+								<th>대출일</th>
+								<th>반납예정일</th>
+								<th>연체일수</th>
+								<th>상태</th>
+								<th>수정</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>4123</td>
+								<td>누워서 읽는 알고리즘</td>
+								<td>2017-08-25</td>
+								<td>2017-09-06</td>
+								<td>-</td>
+								<td>대여중</td>
+								<td><a href="/adminpage/book/updatebook.jsp" class="btn btn-success btn-xs">수정하기</a></td>
+							</tr>
+							<tr>
+								<td>4123</td>
+								<td>누워서 읽는 알고리즘</td>
+								<td>2017-08-25</td>
+								<td>2017-09-06</td>
+								<td>-</td>
+								<td>대여중</td>
+								<td><a href="/adminpage/book/updatebook.jsp" class="btn btn-success btn-xs">수정하기</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<a href="/adminpage/book/addbook.jsp" class="btn btn-primary pull-right">새 도서등록</a>
+				<div class="panel-body text-center">
+					<ul class="pagination">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>					
+			</div>		
+		</div>
+	</div>
+</div>
+<%@ include file="/common/footer.jsp" %>
+</body>
+</html>

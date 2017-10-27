@@ -1,0 +1,9 @@
+package kr.go.booktopia.config;
+
+import kr.go.booktopia.util.IbatisUtil;
+
+public class App {
+	public static void main(String[] args) {
+		IbatisUtil.insertDummy();
+	}
+}

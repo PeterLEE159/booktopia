@@ -1,0 +1,16 @@
+package kr.go.booktopia.dao;
+
+public class BookRentalDao extends BaseDao {
+	private static BookRentalDao instance = new BookRentalDao();
+	private BookRentalDao() {
+		
+	}
+	
+	public static BookRentalDao getInstance() {
+		return instance;
+	}
+	
+
+	
+	
+}
